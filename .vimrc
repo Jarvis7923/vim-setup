@@ -151,7 +151,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers=['flake8']
 " let g:syntastic_python_python_use_codec = 1
-let g:syntastic_python_flake8_args = "--allow-untyped-defs --extend-ignore=E501,E261,ANN101,ANN202,ANN204" 
+let g:syntastic_python_flake8_args = "--allow-untyped-defs --extend-ignore=E501,E261,ANN101,ANN202,ANN204,ANN102,ANN206,ANN001"
 
 let g:syntastic_python_mypy_args = "--ignore-missing-imports --follow-imports=silent"
 " syntastic configs ends.
