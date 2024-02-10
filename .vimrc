@@ -162,6 +162,7 @@ let g:uncrustify_cfg_file_path = "~/.uncrustify.cfg"  " path to uncrustify confi
 
 "CtrlP settings
 let g:ctrlp_working_path_mode=0
+let g:ctrlp_show_hidden = 0
 "CtrlP settings ends.
 
 " Trailing white space color group
