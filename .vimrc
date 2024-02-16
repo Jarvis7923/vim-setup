@@ -154,6 +154,9 @@ let g:syntastic_python_checkers=['flake8']
 let g:syntastic_python_flake8_args = "--allow-untyped-defs --extend-ignore=E501,E261,ANN101,ANN202,ANN204,ANN102,ANN206,ANN001"
 
 let g:syntastic_python_mypy_args = "--ignore-missing-imports --follow-imports=silent"
+" TODO: make some check work for cpp.
+let g:syntastic_cpp_checkers=[]
+let g:syntastic_h_checkers=[]
 " syntastic configs ends.
 
 " uncrustify config to use cpp formatter
@@ -196,4 +199,5 @@ au BufNewFile,BufRead *.py
 " Temporary cpp project settings.
 let g:syntastic_enable_cpp_checker = 0
 let g:syntastic_enable_h_checker = 0
-
+let g:syntastic_cpp_check_header = 0
+let g:syntastic_cpp_no_include_search = 1
