@@ -199,5 +199,19 @@ au BufNewFile,BufRead *.py
 " Temporary cpp project settings.
 let g:syntastic_enable_cpp_checker = 0
 let g:syntastic_enable_h_checker = 0
-let g:syntastic_cpp_check_header = 0
-let g:syntastic_cpp_no_include_search = 1
+
+" urdf.
+au BufNewFile,BufRead *.urdf
+    \ setlocal filetype=xml |
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set expandtab
+
+
+" md.
+au BufNewFile,BufRead *.md
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set expandtab
