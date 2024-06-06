@@ -78,7 +78,7 @@ set hidden
 
 " Wild menu settings
 set wildmenu
-set wildignore=*.o,*.a,*.so,*.pyc,*.swp,.git/,*.class,*/target/*,.idea/
+set wildignore=*.o,*.a,*.so,*.pyc,*.swp,.git/,*.class,*/target/*,.idea/,*.pdf,*.PDF,*.rb
 set wildignore+=*.dae
 " Wild menu settings ends.
 
@@ -151,7 +151,7 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers=['flake8']
 " let g:syntastic_python_python_use_codec = 1
-let g:syntastic_python_flake8_args = "--allow-untyped-defs --extend-ignore=E501,E261,ANN101,ANN202,ANN204,ANN102,ANN206,ANN001"
+let g:syntastic_python_flake8_args = "--allow-untyped-defs --extend-ignore=E501,E261,ANN101,ANN003,ANN202,ANN204,ANN102,ANN206,ANN001,E402,E128,E124,E302"
 
 let g:syntastic_python_mypy_args = "--ignore-missing-imports --follow-imports=silent"
 " TODO: make some check work for cpp.
@@ -166,6 +166,9 @@ let g:uncrustify_cfg_file_path = "~/.uncrustify.cfg"  " path to uncrustify confi
 "CtrlP settings
 let g:ctrlp_working_path_mode=0
 let g:ctrlp_show_hidden = 0
+let g:ctrlp_max_depth = 100
+let g:ctrlp_max_files = 20000
+let g:ctrlp_lazy_update = 0
 "CtrlP settings ends.
 
 " Trailing white space color group
@@ -195,6 +198,18 @@ au BufNewFile,BufRead *.py
     \ match BadWhitespace /\s\+$/ |
     \ set encoding=utf-8
 " Python settigns ends.
+
+au BufNewFile,BufRead *.cpp,*.h
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+    \ set fdm=indent |
+    \ match BadWhitespace /\s\+$/ |
+    \ set encoding=utf-8
+" cpp, h settigns ends.
 
 " Temporary cpp project settings.
 let g:syntastic_enable_cpp_checker = 0
