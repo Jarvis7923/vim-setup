@@ -149,7 +149,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_checkers=['flake8', 'mypy']
 " let g:syntastic_python_python_use_codec = 1
 let g:syntastic_python_flake8_args = "--allow-untyped-defs --extend-ignore=E501,E261,ANN101,ANN003,ANN202,ANN204,ANN102,ANN206,ANN001,E402,E128,E124,E302"
 
@@ -167,7 +167,7 @@ let g:uncrustify_cfg_file_path = "~/.uncrustify.cfg"  " path to uncrustify confi
 let g:ctrlp_working_path_mode=0
 let g:ctrlp_show_hidden = 0
 let g:ctrlp_max_depth = 100
-let g:ctrlp_max_files = 20000
+let g:ctrlp_max_files = 50000
 let g:ctrlp_lazy_update = 0
 "CtrlP settings ends.
 
@@ -216,7 +216,7 @@ let g:syntastic_enable_cpp_checker = 0
 let g:syntastic_enable_h_checker = 0
 
 " urdf.
-au BufNewFile,BufRead *.urdf
+au BufNewFile,BufRead *.urdf,*.xacro
     \ setlocal filetype=xml |
     \ set tabstop=2 |
     \ set softtabstop=2 |
