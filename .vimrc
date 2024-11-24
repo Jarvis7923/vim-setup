@@ -1,3 +1,7 @@
+
+" tmux color
+set background=dark
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 " set the runtime path to include Vundle and initialize
@@ -30,6 +34,8 @@ Plugin 'integralist/vim-mypy'
 Plugin 'vim-scripts/indentpython.vim'
 " Fold function with doc strings.
 Plugin 'tmhedberg/SimpylFold'
+
+Plugin 'davidhalter/jedi-vim'
 
 " Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
@@ -64,7 +70,7 @@ filetype plugin indent on    " required
 " global settings
 syntax on
 
-set path=**
+" set path=**
 
 set foldlevel=99
 set fdm=syntax
@@ -94,16 +100,16 @@ filetype on
 filetype plugin on
 
 " Load an indent file for the detected file type.
-filetype indent on
+" filetype indent on
 
 " Set shift width to 4 spaces.
-" set shiftwidth=4
+set shiftwidth=4
 
 " Set tab width to 4 columns.
-" set tabstop=4
+set tabstop=4
 
 " Use space characters instead of tabs.
-" set expandtab
+set expandtab
 
 " Do not save backup files.
 set nobackup
@@ -146,14 +152,20 @@ set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers=['flake8', 'mypy']
-" let g:syntastic_python_python_use_codec = 1
-let g:syntastic_python_flake8_args = "--allow-untyped-defs --extend-ignore=E501,E261,ANN101,ANN003,ANN202,ANN204,ANN102,ANN206,ANN001,E402,E128,E124,E302"
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_auto_loc_list = 1
 
-let g:syntastic_python_mypy_args = "--ignore-missing-imports --follow-imports=silent"
+let g:syntastic_python_checkers=['mypy', 'flake8']
+let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': []}
+" let g:syntastic_python_python_use_codec = 1
+""--extend-ignore=E501,E261,ANN101,ANN003,ANN202,ANN204,ANN102,ANN206,ANN001,E402,E128,E124,E302"
+let g:syntastic_python_flake8_args = "--allow-untyped-defs --extend-ignore=E501,E261,ANN101,ANN102,ANN002,ANN003,ANN204,ANN206,E402,E128,E124,E302,E222,F401"
+
+let g:syntastic_python_mypy_args = "--ignore-missing-imports --follow-imports silent --disable-error-code=import-untyped"
+
+" syntastic cpp.
 " TODO: make some check work for cpp.
 let g:syntastic_cpp_checkers=[]
 let g:syntastic_h_checkers=[]
@@ -169,6 +181,12 @@ let g:ctrlp_show_hidden = 0
 let g:ctrlp_max_depth = 100
 let g:ctrlp_max_files = 50000
 let g:ctrlp_lazy_update = 0
+let g:ctrlp_custom_ignore = {
+\ 'dir':  '\v[\/]\.(git|hg|svn)$',
+\ 'file': '\v\.(exe|so|dll|pdf|po)$',
+\ }
+
+"
 "CtrlP settings ends.
 
 " Trailing white space color group
@@ -197,6 +215,12 @@ au BufNewFile,BufRead *.py
     \ set fdm=indent |
     \ match BadWhitespace /\s\+$/ |
     \ set encoding=utf-8
+
+let g:jedi#completions_enabled = 1
+let g:jedi#popup_select_first = 1
+let g:jedi#popup_on_dot = 0
+" let g:jedi#auto_initialization = 1
+
 " Python settigns ends.
 
 au BufNewFile,BufRead *.cpp,*.h
@@ -222,7 +246,6 @@ au BufNewFile,BufRead *.urdf,*.xacro
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
     \ set expandtab
-
 
 " md.
 au BufNewFile,BufRead *.md
