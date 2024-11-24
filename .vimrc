@@ -169,6 +169,7 @@ let g:syntastic_python_mypy_args = "--ignore-missing-imports --follow-imports si
 " TODO: make some check work for cpp.
 let g:syntastic_cpp_checkers=[]
 let g:syntastic_h_checkers=[]
+let g:syntastic_tex_checkers=['lacheck']
 " syntastic configs ends.
 
 " uncrustify config to use cpp formatter
@@ -242,6 +243,18 @@ let g:syntastic_enable_h_checker = 0
 " urdf.
 au BufNewFile,BufRead *.urdf,*.xacro
     \ setlocal filetype=xml |
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set expandtab
+
+" Makefile.
+au BufNewFile,BufRead Makefile
+    \ set tabstop=4 |
+    \ set noexpandtab
+
+" tex.
+au BufNewFile,BufRead *.tex
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
