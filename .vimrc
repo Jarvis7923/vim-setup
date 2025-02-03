@@ -1,18 +1,3 @@
-if has("gui_running")
-  " GUI is running or is about to start.
-  " Maximize gvim window.
-  set lines=50 columns=200
-else
-  " This is console Vim.
-  if exists("+lines")
-    set lines=50
-  endif
-  if exists("+columns")
-    set columns=100
-  endif
-endif
-
-
 " tmux color
 set background=dark
 
@@ -175,7 +160,7 @@ let g:syntastic_python_checkers=['mypy', 'flake8']
 let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': []}
 " let g:syntastic_python_python_use_codec = 1
 ""--extend-ignore=E501,E261,ANN101,ANN003,ANN202,ANN204,ANN102,ANN206,ANN001,E402,E128,E124,E302"
-let g:syntastic_python_flake8_args = "--allow-untyped-defs --extend-ignore=E501,E261,ANN101,ANN102,ANN002,ANN003,ANN204,ANN206,E402,E128,E124,E302,E222,F401"
+let g:syntastic_python_flake8_args = "--allow-untyped-defs --extend-ignore=E501,E261,ANN101,ANN102,ANN002,ANN003,ANN204,ANN206,E402,E128,E124,E302,E222,F401,W291,W293"
 
 let g:syntastic_python_mypy_args = "--ignore-missing-imports --follow-imports silent --disable-error-code=import-untyped"
 
