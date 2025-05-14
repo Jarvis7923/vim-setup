@@ -1,8 +1,24 @@
+" gvim settings
+" if has("gui_running")
+"   " GUI is running or is about to start.
+"   " Maximize gvim window.
+"   set lines=50 columns=200
+" else
+"   " This is console Vim.
+"   if exists("+lines")
+"     set lines=9999999
+"   endif
+"   if exists("+columns")
+"     set columns=999999
+"   endif
+" endif
+
+
 " tmux color
 set background=dark
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible
+filetype off
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/vundleplugins')
@@ -15,44 +31,19 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 
-" Cpp formatter,
-Plugin 'ompugao/uncrustify-vim'
+Plugin 'dense-analysis/ale'
+
+" Cpp formatter
+" Plugin 'ompugao/uncrustify-vim'
 
 " Utilities.
 Plugin 'kien/ctrlp.vim'
 Plugin 'preservim/nerdtree'
 
-" Syntax checking and highlighting.
-Plugin 'vim-syntastic/syntastic'
-
-" Plugin 'nvie/vim-flake8'
-
-" Python specifics.
-Plugin 'integralist/vim-mypy'
-" Use the PEP8 bracket, paranthesis, indentation. Not function signiture.
-Plugin 'vim-scripts/indentpython.vim'
-" Fold function with doc strings.
-Plugin 'tmhedberg/SimpylFold'
-
-Plugin 'davidhalter/jedi-vim'
-
-" Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
-
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+"
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -145,32 +136,6 @@ set hlsearch
 " Set the commands to save in history default number is 20.
 set history=5000
 
-" syntastic configs.
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1
-let g:syntastic_auto_loc_list = 1
-
-let g:syntastic_python_checkers=['mypy', 'flake8']
-let g:syntastic_mode_map = {'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': []}
-" let g:syntastic_python_python_use_codec = 1
-""--extend-ignore=E501,E261,ANN101,ANN003,ANN202,ANN204,ANN102,ANN206,ANN001,E402,E128,E124,E302"
-let g:syntastic_python_flake8_args = "--allow-untyped-defs --extend-ignore=E501,E261,ANN101,ANN102,ANN002,ANN003,ANN204,ANN206,E402,E128,E124,E302,E222,F401,W291,W293"
-
-let g:syntastic_python_mypy_args = "--ignore-missing-imports --follow-imports silent --disable-error-code=import-untyped"
-
-" syntastic cpp.
-" TODO: make some check work for cpp.
-let g:syntastic_cpp_checkers=[]
-let g:syntastic_h_checkers=[]
-let g:syntastic_tex_checkers=['lacheck']
-" syntastic configs ends.
-
 " uncrustify config to use cpp formatter
 let g:uncrustify_cfg_file_path = "~/.uncrustify.cfg"  " path to uncrustify configuration file
 " uncrustify config to use cpp formatter ends.
@@ -234,10 +199,6 @@ au BufNewFile,BufRead *.cpp,*.h
     \ match BadWhitespace /\s\+$/ |
     \ set encoding=utf-8
 " cpp, h settigns ends.
-
-" Temporary cpp project settings.
-let g:syntastic_enable_cpp_checker = 0
-let g:syntastic_enable_h_checker = 0
 
 " urdf.
 au BufNewFile,BufRead *.urdf,*.xacro
