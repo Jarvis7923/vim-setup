@@ -147,7 +147,7 @@ let g:ale_linters={
             \ 'python': ['pylint', 'flake8', 'mypy'],
             \ }
 let g:ale_fixers={
-            \ 'python': ['ruff', 'ruff_format', 'isort'],
+            \ 'python': ['ruff', 'ruff_format', 'isort', 'autoflake'],
             \ }
 
 " trailing white space color group
