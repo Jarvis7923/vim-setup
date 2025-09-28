@@ -144,7 +144,7 @@ let g:ctrlp_custom_ignore={
 
 " ale settings
 let g:ale_linters={
-            \ 'python': ['pylint', 'flake8', 'mypy'],
+            \ 'python': ['pylint', 'flake8', 'mypy', 'ruff'],
             \ }
 let g:ale_fixers={
             \ 'python': ['ruff', 'ruff_format', 'isort', 'autoflake'],
